@@ -3,7 +3,7 @@
         <form class="inputs" [formGroup]='options'>
             <mat-form-field appearance="fill">
                 <mat-label>Тип игры</mat-label>
-                <mat-select placeholder="Картинка + картинка" (selectionChange)="onSelect($event.value)" formControlName='mode'>
+                <mat-select placeholder="Картинка + картинка" (selectionChange)="onSelect()" formControlName='mode'>
                     <mat-option value="DIG">Картинка + картинка</mat-option>
                     <mat-option value="DWG">Слово + слово</mat-option>
                     <mat-option value="IMIG">Картинка + много картинок</mat-option>

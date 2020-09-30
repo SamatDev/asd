@@ -1,5 +1,5 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-header',
@@ -9,18 +9,10 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 
 export class AppHeader {
   @Input() options: FormGroup;
-  @Output() userNameChange = new EventEmitter<FormGroup>();
+  @Output() gameChanged = new EventEmitter<FormGroup>();
 
-  constructor(fb: FormBuilder) {
-  }
-
-  //testing
-  ngOnInit() {
-    console.log(this.options)
-  }
-
-  onSelect(mode: string) {
-    this.userNameChange.emit(this.options);
+  onSelect() {
+    this.gameChanged.emit(this.options);
   }
 
   condition = () => {

@@ -14,12 +14,14 @@ import { AppHeader } from './header/header.component';
 import { HeaderModule } from './header/header.module';
 // games component
 import { DIG } from './games/doubleimage-game/doubleimg.component'
+import { DWG } from './games/doubleword-game/doubleword.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     AppHeader,
-    DIG
+    DIG,
+    DWG
   ],
   imports: [
     BrowserModule,
