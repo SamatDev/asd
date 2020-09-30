@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -8,23 +8,23 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 
 export class AppHeader {
-  options: FormGroup;
-
-  memoryVolumeControl = new FormControl(3, Validators.min(2));
-  speedVolumeControl = new FormControl(2, Validators.min(1));
-  modeControl = new FormControl('DIG');
-  howManyControl = new FormControl(2, Validators.min(1));
-  condition = () => {
-    return this.modeControl.value === 'IMIG' ? true : false
-  }
+  @Input() options: FormGroup;
+  @Output() userNameChange = new EventEmitter<FormGroup>();
 
   constructor(fb: FormBuilder) {
-    this.options = fb.group({
-      memoryVolume: this.memoryVolumeControl,
-      speedVolume: this.speedVolumeControl,
-      mode: this.modeControl,
-      howMany: this.howManyControl
-    });
+  }
+
+  //testing
+  ngOnInit() {
+    console.log(this.options)
+  }
+
+  onSelect(mode: string) {
+    this.userNameChange.emit(this.options);
+  }
+
+  condition = () => {
+    return this.options.controls.mode.value === 'IMIG' ? true : false
   }
 }
 

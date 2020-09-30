@@ -3,7 +3,7 @@
         <form class="inputs" [formGroup]='options'>
             <mat-form-field appearance="fill">
                 <mat-label>Тип игры</mat-label>
-                <mat-select placeholder="Картинка + картинка" [formControl]='modeControl'>
+                <mat-select placeholder="Картинка + картинка" (selectionChange)="onSelect($event.value)" formControlName='mode'>
                     <mat-option value="DIG">Картинка + картинка</mat-option>
                     <mat-option value="DWG">Слово + слово</mat-option>
                     <mat-option value="IMIG">Картинка + много картинок</mat-option>
@@ -13,17 +13,17 @@
 
             <mat-form-field appearance="fill">
                 <mat-label>Объем запоминания</mat-label>
-                <input matInput type="number" placeholder="3" min="1" [formControl]='memoryVolumeControl'>
+                <input matInput type="number" placeholder="3" min="1" formControlName='memoryVolume'>
             </mat-form-field>
 
             <mat-form-field appearance="fill">
                 <mat-label>Скорость запоминания</mat-label>
-                <input matInput type="number" placeholder="2" min="1" [formControl]='speedVolumeControl'>
+                <input matInput type="number" placeholder="2" min="1" formControlName='speedVolume'>
             </mat-form-field>
 
             <mat-form-field appearance="fill" *ngIf='condition()'>
                 <mat-label>Количество картинок</mat-label>
-                <input matInput type="number" placeholder="2" min="1" [formControl]='howManyControl'>
+                <input matInput type="number" placeholder="2" min="1" formControlName='howMany'>
             </mat-form-field>
         </form>
 
