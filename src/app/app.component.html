@@ -1,5 +1,6 @@
-<app-header></app-header>
+<app-header [(options)]="options"></app-header>
 
 <d-i-g *ngIf='modeDIG()'></d-i-g>
-
-<button (click)="clicker()">asd</button>
+<d-w-g *ngIf='modeDWG()'></d-w-g>
+<i-m-i-g *ngIf='modeIMIG()'></i-m-i-g>
+<i-w-g *ngIf='modeIWG()'></i-w-g>

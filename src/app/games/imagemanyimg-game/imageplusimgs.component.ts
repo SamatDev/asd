@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'd-w-g',
+    selector: 'i-m-i-g',
     templateUrl: './imageplusimgs.component.html',
     styleUrls: ['./imageplusimgs.component.scss']
 })

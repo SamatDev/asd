@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-header',
@@ -8,23 +8,15 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 
 export class AppHeader {
-  options: FormGroup;
+  @Input() options: FormGroup;
+  @Output() gameChanged = new EventEmitter<FormGroup>();
 
-  memoryVolumeControl = new FormControl(3, Validators.min(2));
-  speedVolumeControl = new FormControl(2, Validators.min(1));
-  modeControl = new FormControl('DIG');
-  howManyControl = new FormControl(2, Validators.min(1));
-  condition = () => {
-    return this.modeControl.value === 'IMIG' ? true : false
+  onSelect() {
+    this.gameChanged.emit(this.options);
   }
 
-  constructor(fb: FormBuilder) {
-    this.options = fb.group({
-      memoryVolume: this.memoryVolumeControl,
-      speedVolume: this.speedVolumeControl,
-      mode: this.modeControl,
-      howMany: this.howManyControl
-    });
+  condition = () => {
+    return this.options.controls.mode.value === 'IMIG' ? true : false
   }
 }
 
