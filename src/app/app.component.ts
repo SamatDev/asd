@@ -30,15 +30,15 @@ export class AppComponent implements OnInit{
   }
   
   modeDIG = () => {
-    return this.options.controls.mode.value === 'DIG' ? true : false
+    return this.options.controls.mode.value === 'DIG'
   }
   modeDWG = () => {
-    return this.options.controls.mode.value === 'DWG' ? true : false
+    return this.options.controls.mode.value === 'DWG'
   }
   modeIMIG = () => {
-    return this.options.controls.mode.value === 'IMIG' ? true : false
+    return this.options.controls.mode.value === 'IMIG'
   }
   modeIWG = () => {
-    return this.options.controls.mode.value === 'IWG' ? true : false
+    return this.options.controls.mode.value === 'IWG'
   }
 }

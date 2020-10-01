@@ -16,7 +16,7 @@ export class AppHeader {
   }
 
   condition = () => {
-    return this.options.controls.mode.value === 'IMIG' ? true : false
+    return this.options.controls.mode.value === 'IMIG'
   }
 }
 
