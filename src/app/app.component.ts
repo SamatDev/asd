@@ -11,16 +11,16 @@ export class AppComponent implements AfterViewInit{
   gameMode:string = 'IMIG'
 
   modeDIG = () => {
-    return this.gameMode === 'DIG' ? true : false
+    return this.gameMode === 'DIG'
   }
   modeDWG = () => {
-    return this.gameMode === 'DWG' ? true : false
+    return this.gameMode === 'DWG'
   }
   modeIMIG = () => {
-    return this.gameMode === 'IMIG' ? true : false
+    return this.gameMode === 'IMIG'
   }
   modeIWG = () => {
-    return this.gameMode === 'IWG' ? true : false
+    return this.gameMode === 'IWG'
   }
 
   @ViewChild(AppHeader) child: AppHeader;
