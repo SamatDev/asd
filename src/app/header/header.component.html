@@ -28,7 +28,43 @@
         </form>
 
         <div class="menu">
-            <h2>asd</h2>
+            <button mat-mini-fab color="primary" aria-label="Play">
+                <fa-icon [icon]='faPlay'></fa-icon>
+            </button>
+
+            <button mat-mini-fab color="primary" aria-label="Cogs" (click)='openDialog($event)'>
+                <fa-icon [icon]='faCogs'></fa-icon>
+            </button>
+        </div>
+
+        <div class="dialog" *ngIf='dialogStatus' @openClose>
+            <form class="inputs" [formGroup]='options'>
+                <button class="close" (click)='openDialog($event)'>&times;</button>
+                <mat-form-field appearance="fill">
+                    <mat-label>Тип игры</mat-label>
+                    <mat-select placeholder="Картинка + картинка" (selectionChange)="onSelect()" formControlName='mode'>
+                        <mat-option value="DIG">Картинка + картинка</mat-option>
+                        <mat-option value="DWG">Слово + слово</mat-option>
+                        <mat-option value="IMIG">Картинка + много картинок</mat-option>
+                        <mat-option value="IWG">Картинка + слово</mat-option>
+                    </mat-select>
+                </mat-form-field>
+    
+                <mat-form-field appearance="fill">
+                    <mat-label>Объем запоминания</mat-label>
+                    <input matInput type="number" placeholder="3" min="1" formControlName='memoryVolume'>
+                </mat-form-field>
+    
+                <mat-form-field appearance="fill">
+                    <mat-label>Скорость запоминания</mat-label>
+                    <input matInput type="number" placeholder="2" min="1" formControlName='speedVolume'>
+                </mat-form-field>
+    
+                <mat-form-field appearance="fill" *ngIf='condition()'>
+                    <mat-label>Количество картинок</mat-label>
+                    <input matInput type="number" placeholder="2" min="1" formControlName='howMany'>
+                </mat-form-field>
+            </form>
         </div>
     </div>
 </header>

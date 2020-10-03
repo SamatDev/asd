@@ -29,16 +29,9 @@ export class AppComponent implements OnInit{
     });
   }
   
-  modeDIG = () => {
-    return this.options.controls.mode.value === 'DIG'
-  }
-  modeDWG = () => {
-    return this.options.controls.mode.value === 'DWG'
-  }
-  modeIMIG = () => {
-    return this.options.controls.mode.value === 'IMIG'
-  }
-  modeIWG = () => {
-    return this.options.controls.mode.value === 'IWG'
-  }
+  modeDIG = () =>  this.options.controls.mode.value === 'DIG'
+  modeDWG = () =>  this.options.controls.mode.value === 'DWG'
+  modeIMIG = () => this.options.controls.mode.value === 'IMIG'
+  modeIWG = () =>  this.options.controls.mode.value === 'IWG'
+
 }
