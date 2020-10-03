@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import { StateService } from '../../state.service'
@@ -9,20 +9,21 @@ import { StateService } from '../../state.service'
     styleUrls: ['./doubleimg.component.scss']
 })
 
-export class DIG {
+export class DIG implements OnInit{
     constructor(private stateService: StateService) {
 
     }
 
     faPlay = faPlay
     
-    @Input() gameStatus: boolean;
-    @Output() goPlay = new EventEmitter<boolean>();
+    gameStatus = () => this.stateService.gameStatusState
 
+    ngOnInit() {
+      
+    }
     onClick(e) {
       e.preventDefault()
-      this.goPlay.emit(this.gameStatus = !this.gameStatus)
-      console.log(this.gameStatus)
+      this.stateService.changeGameStatus()
     }
 
     todo = [

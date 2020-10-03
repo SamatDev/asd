@@ -1,5 +1,5 @@
 <div class="main">
-    <app-header [(options)]="options" [(gameStatus)]='gameStatus'></app-header>
+    <app-header [(options)]="options"></app-header>
     <div class="game-window">
         <div class="container-game">
             <div class="game-border">
@@ -12,11 +12,10 @@
                 </div>
             </div>
             
-            <d-i-g *ngIf='modeDIG()' [(gameStatus)]='gameStatus' class="mode"></d-i-g>
+            <d-i-g *ngIf='modeDIG()' class="mode"></d-i-g>
             <d-w-g *ngIf='modeDWG()' class="mode"></d-w-g>
             <i-m-i-g *ngIf='modeIMIG()' class="mode"></i-m-i-g>
             <i-w-g *ngIf='modeIWG()' class="mode"></i-w-g>
-            
         </div>
     </div>
 

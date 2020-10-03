@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { StateService } from './state.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,6 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 export class AppComponent implements OnInit{
   title = 'my-app';
 
-  gameStatus: boolean = false;
   options: FormGroup;
 
   memoryVolumeControl = new FormControl(3, Validators.min(2));
@@ -17,8 +17,9 @@ export class AppComponent implements OnInit{
   modeControl = new FormControl('DIG');
   howManyControl = new FormControl(2, Validators.min(1));
 
+  gameStatus: boolean = false
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private stateService: StateService) {
   }
 
 

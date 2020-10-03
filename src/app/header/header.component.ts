@@ -11,6 +11,7 @@ import {
 
 // fontAwesome elems
 import { faPlay, faCogs } from '@fortawesome/free-solid-svg-icons';
+import { StateService } from '../state.service';
 
 @Component({
   selector: 'app-header',
@@ -32,14 +33,11 @@ import { faPlay, faCogs } from '@fortawesome/free-solid-svg-icons';
 export class AppHeader {
   @Input() options: FormGroup;
   @Output() gameChanged = new EventEmitter<FormGroup>();
-
-  @Input() gameStatus: boolean;
-  @Output() goPlay = new EventEmitter<boolean>();
-
+  constructor (private stateService: StateService) {}
+  gameSatus = this.stateService.gameStatusState
   onClick(e) {
     e.preventDefault()
-    this.goPlay.emit(this.gameStatus = !this.gameStatus)
-    console.log(this.gameStatus)
+    this.stateService.changeGameStatus()
   }
 
   faPlay = faPlay

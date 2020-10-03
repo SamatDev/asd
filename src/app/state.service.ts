@@ -7,7 +7,13 @@ export class StateService {
 
   constructor() { }
 
-  getGameStatus() {
-    return true
+  gameStatusState: boolean = false
+
+  getGameStatus () {
+    return this.gameStatusState
+  }
+
+  changeGameStatus () {
+    this.gameStatusState = !this.gameStatusState
   }
 }
