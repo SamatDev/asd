@@ -33,6 +33,15 @@ export class AppHeader {
   @Input() options: FormGroup;
   @Output() gameChanged = new EventEmitter<FormGroup>();
 
+  @Input() gameStatus: boolean;
+  @Output() goPlay = new EventEmitter<boolean>();
+
+  onClick(e) {
+    e.preventDefault()
+    this.goPlay.emit(this.gameStatus = !this.gameStatus)
+    console.log(this.gameStatus)
+  }
+
   faPlay = faPlay
   faCogs = faCogs
   
@@ -48,4 +57,5 @@ export class AppHeader {
     event.preventDefault()
     this.dialogStatus = !this.dialogStatus
   }
+  
 }

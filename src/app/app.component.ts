@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 export class AppComponent implements OnInit{
   title = 'my-app';
 
+  gameStatus: boolean = false;
   options: FormGroup;
 
   memoryVolumeControl = new FormControl(3, Validators.min(2));
@@ -19,6 +20,7 @@ export class AppComponent implements OnInit{
 
   constructor(private formBuilder: FormBuilder) {
   }
+
 
   ngOnInit() {
     this.options = this.formBuilder.group({

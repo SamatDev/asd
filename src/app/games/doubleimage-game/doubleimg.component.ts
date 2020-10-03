@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
+import { StateService } from '../../state.service'
 
 @Component({
     selector: 'd-i-g',
@@ -9,8 +10,20 @@ import { faPlay } from '@fortawesome/free-solid-svg-icons';
 })
 
 export class DIG {
+    constructor(private stateService: StateService) {
+
+    }
+
     faPlay = faPlay
-    gameStatus: boolean = false
+    
+    @Input() gameStatus: boolean;
+    @Output() goPlay = new EventEmitter<boolean>();
+
+    onClick(e) {
+      e.preventDefault()
+      this.goPlay.emit(this.gameStatus = !this.gameStatus)
+      console.log(this.gameStatus)
+    }
 
     todo = [
       'Get to work',
@@ -36,11 +49,6 @@ export class DIG {
                           event.previousIndex,
                           event.currentIndex);
       }
-    }
-
-    goPlay(e) {
-        e.preventDefault()
-        this.gameStatus = !this.gameStatus
     }
 }
 

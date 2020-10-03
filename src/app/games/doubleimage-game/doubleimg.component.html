@@ -1,7 +1,10 @@
 <div class="play" *ngIf='!gameStatus'>
-    <button mat-mini-fab color="primary" aria-label="Play" (click)='goPlay($event)'>
+    <button mat-mini-fab color="primary" aria-label="Play" (click)='onClick($event)'>
         <fa-icon [icon]='faPlay'></fa-icon>
     </button>
+
+    <h1>{{gameStatus}}</h1>
+    
 </div>
 <div class="game-content" *ngIf = 'gameStatus'>
     <div class="example-container">
