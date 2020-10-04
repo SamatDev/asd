@@ -30,6 +30,11 @@ export class AppComponent implements OnInit{
       mode: this.modeControl,
       howMany: this.howManyControl
     });
+
+    this.stateService.gameOptions.memoryVolume = this.options.controls.memoryVolume.value
+    this.stateService.gameOptions.speedVolume = this.options.controls.speedVolume.value
+    this.stateService.gameOptions.howMany = this.options.controls.howMany.value
+
   }
   
   modeDIG = () =>  this.options.controls.mode.value === 'DIG'
@@ -37,4 +42,5 @@ export class AppComponent implements OnInit{
   modeIMIG = () => this.options.controls.mode.value === 'IMIG'
   modeIWG = () =>  this.options.controls.mode.value === 'IWG'
 
+  points = () => this.stateService.points
 }

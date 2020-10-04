@@ -3,7 +3,6 @@ import { FormGroup } from '@angular/forms';
 
 import {
   trigger,
-  state,
   style,
   animate,
   transition
@@ -34,9 +33,14 @@ export class AppHeader {
   @Input() options: FormGroup;
   @Output() gameChanged = new EventEmitter<FormGroup>();
   constructor (private stateService: StateService) {}
-  gameSatus = this.stateService.gameStatusState
+  gameStatus = () => this.stateService.gameStatusState
   onClick(e) {
     e.preventDefault()
+    if(!this.gameStatus()) {
+      this.stateService.startTimer()
+    }else{
+      this.stateService.timerStatus = false
+    }
     this.stateService.changeGameStatus()
   }
 
@@ -45,8 +49,17 @@ export class AppHeader {
   
   dialogStatus: boolean = false
 
+  memoryVolume = this.stateService.gameOptions.memoryVolume
+  speedVolume = this.stateService.gameOptions.speedVolume
+  howMany = this.stateService.gameOptions.howMany
+
+
   onSelect() {
-    this.gameChanged.emit(this.options);
+    this.gameChanged.emit(this.options)
+    this.stateService.gameOptions.memoryVolume = this.options.controls.memoryVolume.value
+    this.stateService.gameOptions.speedVolume = this.options.controls.speedVolume.value
+    this.stateService.gameOptions.howMany = this.options.controls.howMany.value
+    this.stateService.stopGame()
   }
 
   condition = () => this.options.controls.mode.value === 'IMIG'

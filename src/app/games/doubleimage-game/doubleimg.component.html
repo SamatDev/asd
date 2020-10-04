@@ -3,29 +3,47 @@
         <fa-icon [icon]='faPlay'></fa-icon>
     </button>
 </div>
-<div class="game-content" *ngIf='gameStatus()'>
-    <div class="example-container">
-        <h2>To do</h2>
+
+<div class="timer" *ngIf='getTimerStatus()'>{{ timer() }}</div>
+
+<div class="game-content" *ngIf='gameStatus() && !getTimerStatus()'>
+    <div class="variables">
         <div
           cdkDropList
           #todoList="cdkDropList"
-          [cdkDropListData]="todo"
+          [cdkDropListData]="todo()"
+          cdkDropListOrientation="horizontal"
           [cdkDropListConnectedTo]="[doneList]"
-          class="example-list"
-          (cdkDropListDropped)="drop($event)">
-          <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+          (cdkDropListDropped)="drop($event)"
+          class="variables-wrap">
+          <div class="var-box" *ngFor="let item of todo()"  cdkDrag>
+            <img class="game-img" src="{{ item.value }}" alt="">
+          </div>
         </div>
     </div>
-      <div class="example-container">
-        <h2>Done</h2>
+      <div class="answer">
         <div
           cdkDropList
           #doneList="cdkDropList"
-          [cdkDropListData]="done"
+          [cdkDropListData]="done()"
+          cdkDropListOrientation="horizontal"
           [cdkDropListConnectedTo]="[todoList]"
-          class="example-list"
+          class="answer-wrap"
           (cdkDropListDropped)="drop($event)">
-          <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
+          <div class="var-box" *ngFor="let item of done()" [cdkDragDisabled]='item' cdkDrag>
+            <img class="game-img" src="{{ item.value }}" alt="">
+          </div>
         </div>
     </div>
 </div>
+
+<div class="anouncer" *ngIf='!anounced'>
+  <div class="anouncer-wrap">
+    <div class="anounce-level">{{ anounceLevel }}</div>
+    <img src="{{ imageDone }}" *ngIf='imageDone.length' alt="">
+    <fa-icon [icon]='faLongArrowAltRight'></fa-icon>
+    <img src="{{ imageTwo }}" *ngIf='imageDone.length' alt="">
+  </div>
+</div>
+
+

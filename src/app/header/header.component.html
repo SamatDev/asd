@@ -13,17 +13,17 @@
 
             <mat-form-field appearance="fill">
                 <mat-label>Объем запоминания</mat-label>
-                <input matInput type="number" placeholder="3" min="1" formControlName='memoryVolume'>
+                <input matInput type="number" [(ngModel)]='memoryVolume' min="1" (input)="onSelect()" formControlName='memoryVolume'>
             </mat-form-field>
 
             <mat-form-field appearance="fill">
                 <mat-label>Скорость запоминания</mat-label>
-                <input matInput type="number" placeholder="2" min="1" formControlName='speedVolume'>
+                <input matInput type="number" [(ngModel)]="speedVolume" min="1" (input)="onSelect()" formControlName='speedVolume'>
             </mat-form-field>
 
             <mat-form-field appearance="fill" *ngIf='condition()'>
                 <mat-label>Количество картинок</mat-label>
-                <input matInput type="number" placeholder="2" min="1" formControlName='howMany'>
+                <input matInput type="number" [(ngModel)]="howMany" min="1" (input)="onSelect()" formControlName='howMany'>
             </mat-form-field>
         </form>
 
@@ -52,17 +52,17 @@
     
                 <mat-form-field appearance="fill">
                     <mat-label>Объем запоминания</mat-label>
-                    <input matInput type="number" placeholder="3" min="1" formControlName='memoryVolume'>
+                    <input matInput type="number" [(ngModel)]='memoryVolume' min="1" (input)="onSelect()" formControlName='memoryVolume'>
                 </mat-form-field>
     
                 <mat-form-field appearance="fill">
                     <mat-label>Скорость запоминания</mat-label>
-                    <input matInput type="number" placeholder="2" min="1" formControlName='speedVolume'>
+                    <input matInput type="number" [(ngModel)]="speedVolume" min="1" (input)="onSelect()" formControlName='speedVolume'>
                 </mat-form-field>
     
                 <mat-form-field appearance="fill" *ngIf='condition()'>
                     <mat-label>Количество картинок</mat-label>
-                    <input matInput type="number" placeholder="2" min="1" formControlName='howMany'>
+                    <input matInput type="number" [(ngModel)]="howMany" min="1" (input)="onSelect()" formControlName='howMany'>
                 </mat-form-field>
             </form>
         </div>

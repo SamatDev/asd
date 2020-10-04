@@ -1,16 +1,39 @@
-.play{
+.anouncer{
     width: 100%;
     height: 100%;
-    position: relative;
-    button{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%,-50%);
-        width: 100px;
-        height: 100px;
+    display: flex;
+    position: absolute;
+    top: 0;
+    .anouncer-wrap{
+        border-radius: 10px;
+        width: 100%;
+        height: 100%;
+        background-color: purple;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        .anounce-level{
+            position: absolute;
+            left: 50%;
+            top: 10%;
+            font-size: 4rem;
+            color: #fff;
+            transform: translateX(-50%);
+        }
+        img{
+            width: 250px;
+            height: auto;
+            border: 4px solid #fff;
+            border-radius: 10px;
+            padding: 1rem;
+            position: relative;
+        }
         fa-icon{
-            font-size: 2.5rem;
+            margin: 0 2rem;
+            color: #fff;
+            font-size: 10rem;
         }
     }
 }
